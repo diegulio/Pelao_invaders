@@ -17,7 +17,7 @@ velocidad = 5
 
 
 # ---------------------------------------------------------------------
-# Customize your Images!
+# Customize your Images and sounds!
 
 # Player
 PlayerImage = 'images/pelao.png'

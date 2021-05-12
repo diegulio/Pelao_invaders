@@ -1,8 +1,3 @@
-# Pelao Invaders
-
-Created: May 9, 2021 8:44 PM
-url: https://github.com/diegulio/Pelao_invaders
-
 # ***Pelao Invaders***
 
 ![https://media.giphy.com/media/11v0bBwGjkiLio/giphy.gif](https://media.giphy.com/media/11v0bBwGjkiLio/giphy.gif)
