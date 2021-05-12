@@ -12,21 +12,56 @@ HEIGHT = 600
 Color = pygame.Color(0,140,60)
 color_linea=pygame.Color(0,24,150)
 listaEnemigo=[]
-
-
-homero = pygame.image.load('images/simp.png')
 x,y = 500,350
 velocidad = 5
+
+
+# ---------------------------------------------------------------------
+# Customize your Images!
+
+# Player
+PlayerImage = 'images/pelao.png'
+GameOverImage = 'images/go.png'
+ShootImage = 'Images/disparo.png'
+
+#Bad guys 
+
+
+# Bad Diegulio
+BadShootImg = 'Images/disparo_m.png'
+Bad1Img1 = "images/diego1.png"
+Bad1Img2 = "images/diego2.png"
+Bad1Sound = 'sound/diego.wav'
+
+# Bad Jirafilla
+
+Bad2Img1 = "images/dani1.png"
+Bad2Img2 = "images/dani2.png"
+Bad2Sound = 'sound/dani.wav'
+
+
+# BackgroundSound
+BackgroundSound = 'sound/temazo.wav'
+
+
+
+# Customize your Sounds!
+ShootSound = 'sound/shoot.wav'
+GameOverSound = 'sound/go.wav'
+
+
+
+
  
 # Clases
 # ---------------------------------------------------------------------
 class nave(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.ImageJugador = pygame.image.load('images/pelao.png')
-        self.shoot_sound = pygame.mixer.Sound('sound/shoot.wav')
-        self.sonidomuerte = pygame.mixer.Sound('sound/go.wav')
-        self.ImageMuerte = pygame.image.load('images/go.png')
+        self.ImageJugador = pygame.image.load(PlayerImage)
+        self.shoot_sound = pygame.mixer.Sound(ShootSound)
+        self.sonidomuerte = pygame.mixer.Sound(GameOverSound)
+        self.ImageMuerte = pygame.image.load(GameOverImage)
         #Creamos el rectangulod de la imagen
         self.rect = self.ImageJugador.get_rect()
         self.rect.centerx = WIDTH/2
@@ -51,7 +86,7 @@ class nave(pygame.sprite.Sprite):
             
     def disparar(self,x,y):
         self.shoot_sound.play()
-        disparo_ = disparo(x,y,'Images/disparo.png',True)
+        disparo_ = disparo(x,y,ShootImage,True)
         self.listaDisparo.append(disparo_)
     def aparecer(self,ventana):
         ventana.blit(self.ImageJugador,self.rect)
@@ -167,7 +202,7 @@ class malulo(pygame.sprite.Sprite):
             x,y = self.rect.center
             self.__disparo(x,y)
     def __disparo(self,x,y):
-        disparo_ = disparo(x,y,'Images/disparo_m.png',False)
+        disparo_ = disparo(x,y,BadShootImg,False)
         self.listaDisparo.append(disparo_)
         
     
@@ -180,13 +215,13 @@ class malulo(pygame.sprite.Sprite):
 # Funciones
 # ---------------------------------------------------------------------
 def cargarEnemigos():
-    enemigo1= malulo(200,0,100,"images/diego1.png","images/diego2.png",'sound/diego.wav')
-    enemigo2= malulo(500,0,100,"images/diego1.png","images/diego2.png",'sound/diego.wav')
-    enemigo3= malulo(800,0,100,"images/diego1.png","images/diego2.png",'sound/diego.wav')
+    enemigo1= malulo(200,0,100,Bad1Img1,Bad1Img2,Bad1Sound)
+    enemigo2= malulo(500,0,100,Bad1Img1,Bad1Img2,Bad1Sound)
+    enemigo3= malulo(800,0,100,Bad1Img1,Bad1Img2,Bad1Sound)
     
-    enemigo1A= malulo(200,-100,100,"images/dani1.png","images/dani2.png",'sound/dani.wav')
-    enemigo2A= malulo(500,-100,100,"images/dani1.png","images/dani2.png",'sound/dani.wav')
-    enemigo3A= malulo(800,-100,100,"images/dani1.png","images/dani2.png",'sound/dani.wav')
+    enemigo1A= malulo(200,-100,100,Bad2Img1,Bad1Img2,Bad2Sound)
+    enemigo2A= malulo(500,-100,100,Bad2Img1,Bad1Img2,Bad2Sound)
+    enemigo3A= malulo(800,-100,100,Bad2Img1,Bad1Img2,Bad2Sound)
     
     listaEnemigo.extend([enemigo1,enemigo2,enemigo3,enemigo1A,enemigo2A,enemigo3A])
     
@@ -205,7 +240,7 @@ def main():
     miFuenteSistema = pygame.font.SysFont('Arial',30)
     texto = miFuenteSistema.render('GAME OVER',0,(120,100,40))
     texto_win = miFuenteSistema.render('WENAA GANASTEE',0,(120,100,40))
-    cancion = pygame.mixer.Sound('sound/temazo.wav')
+    cancion = pygame.mixer.Sound(BackgroundSound)
     cancion.play(3)
     Jugando = True #Para saber si gano o perdio
     reloj = pygame.time.Clock() #tiempo
