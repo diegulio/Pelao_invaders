@@ -219,9 +219,9 @@ def cargarEnemigos():
     enemigo2= malulo(500,0,100,Bad1Img1,Bad1Img2,Bad1Sound)
     enemigo3= malulo(800,0,100,Bad1Img1,Bad1Img2,Bad1Sound)
     
-    enemigo1A= malulo(200,-100,100,Bad2Img1,Bad1Img2,Bad2Sound)
-    enemigo2A= malulo(500,-100,100,Bad2Img1,Bad1Img2,Bad2Sound)
-    enemigo3A= malulo(800,-100,100,Bad2Img1,Bad1Img2,Bad2Sound)
+    enemigo1A= malulo(200,-100,100,Bad2Img1,Bad2Img2,Bad2Sound)
+    enemigo2A= malulo(500,-100,100,Bad2Img1,Bad2Img2,Bad2Sound)
+    enemigo3A= malulo(800,-100,100,Bad2Img1,Bad2Img2,Bad2Sound)
     
     listaEnemigo.extend([enemigo1,enemigo2,enemigo3,enemigo1A,enemigo2A,enemigo3A])
     
